@@ -1,0 +1,114 @@
+@use "sass:math";
+@use "sass:color";
+@use "sass:list";
+
+$grid-size: min(85vw, 500px);
+$cell-size: $grid-size / 9;
+$border-thin: 2px solid var(--border-light);
+$border-thick: 2px solid var(--border-dark);
+
+.grid {
+  display: block;
+  width: $grid-size;
+  height: $grid-size;
+  border: $border-thick;
+  background-color: var(--background-light);
+  box-shadow: 0 4px 8px var(--shadow);
+  margin: 0 auto;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  height: calc($grid-size / 9);
+}
+
+input {
+  width: calc($grid-size / 9);
+  height: 100%;
+  text-align: center;
+  font-size: calc($cell-size / 2.5);
+  border: $border-thin;
+  outline: none;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  background-color: var(--background-light);
+  transition: background-color 0.2s;
+  
+  &[type=number] {
+    -moz-appearance: textfield;
+  }
+  
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  &.invalid {
+    background-color: rgba(231, 76, 60, 0.2);
+    color: var(--error-color);
+  }
+  
+  &:focus {
+    background-color: rgba(52, 152, 219, 0.1);
+    box-shadow: inset 0 0 0 2px var(--primary-color);
+  }
+  
+  &.subgrid-alternate {
+    background-color: var(--background-alternate);
+  }
+}
+
+.row:nth-child(3n) {
+  border-bottom: $border-thick;
+}
+
+input:nth-child(3n) {
+  border-right: $border-thick;
+}
+
+input:last-child {
+  border-right: none;
+}
+
+@media (max-width: 600px) {
+  $grid-size-small: min(84vw, 400px);
+  $cell-size-small: $grid-size-small / 9;
+  
+  .grid {
+    width: $grid-size-small;
+    height: $grid-size-small;
+  }
+  
+  .row {
+    height: calc($grid-size-small / 9);
+  }
+  
+  input {
+    width: calc($grid-size-small / 9);
+    font-size: calc($cell-size-small / 2.5);
+  }
+}
+
+@media (max-width: 400px) {
+  $grid-size-small: min(90vw, 352px);
+  $cell-size-small: $grid-size-small / 9;
+  
+  .grid {
+    width: $grid-size-small;
+    height: $grid-size-small;
+  }
+  
+  .row {
+    height: calc($grid-size-small / 9);
+  }
+  
+  input {
+    width: calc($grid-size-small / 9);
+    font-size: calc($cell-size-small / 2.5);
+  }
+} 

@@ -1,0 +1,49 @@
+@use "sass:math";
+
+.sudoku-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  
+  h1 {
+    margin-bottom: 20px;
+    color: var(--text-dark);
+    font-size: 2.2rem;
+    text-align: center;
+  }
+}
+
+.board {
+  margin: 20px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  box-sizing: content-box;
+}
+
+@media (max-width: 600px) {
+  .sudoku-container {
+    padding: 16px 8px;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .sudoku-container {
+    padding: 8px 4px;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+}

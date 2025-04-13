@@ -1,0 +1,21 @@
+@if (sudokuForm()) {
+  <div class="grid" [formGroup]="sudokuForm()">
+    <div formArrayName="rows">
+      @for (rowGroup of getRowsControls(); track $index; let rowIndex = $index) {
+        <div class="row" [formArrayName]="rowIndex">
+          @for (cell of getRowControls(rowGroup); track $index; let colIndex = $index) {
+            <input 
+              type="number" 
+              min="1" 
+              max="9"
+              [formControlName]="colIndex"
+              [class.invalid]="isCellInvalid(rowIndex, colIndex)"
+              [class.subgrid-alternate]="(Math.floor(rowIndex / 3) + Math.floor(colIndex / 3)) % 2 === 1"
+              oninput="this.value = this.value.replace(/[^1-9]/g, ''); if(parseInt(this.value) < 1 || parseInt(this.value) > 9) this.value = '';"
+            />
+          }
+        </div>
+      }
+    </div>
+  </div>
+} 

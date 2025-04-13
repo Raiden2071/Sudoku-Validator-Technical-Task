@@ -1,0 +1,22 @@
+<div class="sudoku-container">
+  <h1>Sudoku Validator</h1>
+  
+  <app-validation-message 
+    [message]="validationMessage()" 
+    [isSuccess]="isValidationSuccess()"
+  ></app-validation-message>
+  
+  @if (formInitialized()) {
+    <div class="board">
+      <app-sudoku-grid 
+        [sudokuForm]="sudokuForm" 
+        [invalidCells]="invalidCells()"
+      ></app-sudoku-grid>
+    </div>
+    
+    <app-sudoku-controls 
+      (check)="validateSudoku()" 
+      (reset)="resetGrid()"
+    ></app-sudoku-controls>
+  }
+</div>

@@ -1,0 +1,5 @@
+@if (message()) {
+  <div class="validation-message" [class.success]="isSuccess()">
+    {{ message() }}
+  </div>
+}
