@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 export class SudokuControlsComponent {
   check = output<void>();
   reset = output<void>();
+  newGame = output<void>();
   
   onCheck(): void {
     this.check.emit();
@@ -18,5 +19,9 @@ export class SudokuControlsComponent {
   
   onReset(): void {
     this.reset.emit();
+  }
+  
+  onNewGame(): void {
+    this.newGame.emit();
   }
 } 

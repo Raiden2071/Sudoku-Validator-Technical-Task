@@ -32,6 +32,15 @@
       }
     }
     
+    &.new-game-btn {
+      background-color: var(--success-color);
+      color: white;
+      
+      &:hover {
+        background-color: color.adjust(#2ecc71, $lightness: -10%);
+      }
+    }
+    
     &.reset-btn {
       background-color: var(--secondary-color);
       color: white;
@@ -47,11 +56,13 @@
   .controls {
     gap: 16px;
     margin-top: 20px;
+    flex-wrap: wrap;
     
     button {
       padding: 8px 20px;
       font-size: 16px;
       min-width: 100px;
+      flex: 1 1 auto;
     }
   }
 }

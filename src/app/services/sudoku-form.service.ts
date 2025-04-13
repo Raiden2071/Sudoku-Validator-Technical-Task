@@ -33,4 +33,17 @@ export class SudokuFormService {
   createEmptyGrid(): (number | null)[][] {
     return createEmptySudokuGrid();
   }
+  
+  loadPuzzleIntoForm(form: FormGroup, puzzle: (number | null)[][]): void {
+    const rows = this.getRowsArray(form);
+    
+    this.resetForm(form);
+    
+    for (let i = 0; i < 9; i++) {
+      const rowArray = rows.at(i) as FormArray;
+      for (let j = 0; j < 9; j++) {
+        rowArray.at(j).setValue(puzzle[i][j]);
+      }
+    }
+  }
 } 

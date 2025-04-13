@@ -1,6 +1,11 @@
 <div class="sudoku-container">
   <h1>Sudoku Validator</h1>
   
+  <app-timer 
+    [isRunning]="timerRunning()" 
+    [resetSignal]="timerResetCounter()"
+  ></app-timer>
+  
   <app-validation-message 
     [message]="validationMessage()" 
     [isSuccess]="isValidationSuccess()"
@@ -17,6 +22,7 @@
     <app-sudoku-controls 
       (check)="validateSudoku()" 
       (reset)="resetGrid()"
+      (newGame)="startNewGame()"
     ></app-sudoku-controls>
   }
 </div>
