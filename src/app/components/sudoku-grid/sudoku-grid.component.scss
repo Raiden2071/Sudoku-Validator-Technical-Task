@@ -36,7 +36,7 @@ input {
   padding: 0;
   margin: 0;
   background-color: var(--background-light);
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
   
   &[type=number] {
     -moz-appearance: textfield;
@@ -47,20 +47,23 @@ input {
     -webkit-appearance: none;
     margin: 0;
   }
-  
-  &.invalid {
-    background-color: rgba(231, 76, 60, 0.2);
-    color: var(--error-color);
-  }
-  
-  &:focus {
-    background-color: rgba(52, 152, 219, 0.1);
-    box-shadow: inset 0 0 0 2px var(--primary-color);
-  }
-  
-  &.subgrid-alternate {
-    background-color: var(--background-alternate);
-  }
+}
+
+/* Отдельный селектор для невалидных ячеек с высоким приоритетом */
+.grid input.invalid {
+  background-color: rgba(231, 76, 60, 0.2) !important;
+  color: var(--error-color) !important;
+  font-weight: bold !important;
+  border: 2px solid var(--error-color) !important;
+}
+
+input:focus {
+  background-color: rgba(52, 152, 219, 0.1);
+  box-shadow: inset 0 0 0 2px var(--primary-color);
+}
+
+input.subgrid-alternate {
+  background-color: var(--background-alternate);
 }
 
 .row:nth-child(3n) {

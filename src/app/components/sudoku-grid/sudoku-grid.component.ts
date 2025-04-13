@@ -42,6 +42,7 @@ export class SudokuGridComponent implements OnChanges {
   }
   
   isCellInvalid(row: number, col: number): boolean {
-    return this.invalidCells() && this.invalidCells().has(`${row}-${col}`);
+    const key = `${row}-${col}`;
+    return this.invalidCells() && this.invalidCells().has(key);
   }
 } 
