@@ -36,7 +36,7 @@ export class SudokuBoardComponent implements OnInit {
   validationMessage = signal<string>('');
   formInitialized = signal<boolean>(false);
   timerRunning = signal<boolean>(true);
-  timerResetCounter = signal<number>(0); // Счетчик для сброса таймера
+  timerResetCounter = signal<number>(0);
   
   private readonly validatorService = inject(SudokuValidatorService);
   private readonly formService = inject(SudokuFormService);
