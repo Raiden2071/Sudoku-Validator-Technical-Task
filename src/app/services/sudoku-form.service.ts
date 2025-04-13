@@ -7,7 +7,7 @@ import { createEmptySudokuGrid, createSudokuVector } from '../utils/array-utils'
 })
 export class SudokuFormService {
   private readonly fb = inject(FormBuilder);
-  
+
   createSudokuForm(): FormGroup {
     return this.fb.group({
       rows: this.fb.array(
@@ -21,19 +21,7 @@ export class SudokuFormService {
       )
     });
   }
-  
-  getRowsArray(form: FormGroup): FormArray {
-    return form.get('rows') as FormArray;
-  }
-  
-  resetForm(form: FormGroup): void {
-    form.reset();
-  }
-  
-  createEmptyGrid(): (number | null)[][] {
-    return createEmptySudokuGrid();
-  }
-  
+
   loadPuzzleIntoForm(form: FormGroup, puzzle: (number | null)[][]): void {
     const rows = this.getRowsArray(form);
     
@@ -45,5 +33,17 @@ export class SudokuFormService {
         rowArray.at(j).setValue(puzzle[i][j]);
       }
     }
+  }
+
+  getRowsArray(form: FormGroup): FormArray {
+    return form.get('rows') as FormArray;
+  }
+
+  resetForm(form: FormGroup): void {
+    form.reset();
+  }
+
+  createEmptyGrid(): (number | null)[][] {
+    return createEmptySudokuGrid();
   }
 } 

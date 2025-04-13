@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, input, OnChanges, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AbstractControl, FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SudokuFormService } from '../../services/sudoku-form.service';
@@ -10,7 +10,7 @@ import { SudokuFormService } from '../../services/sudoku-form.service';
   styleUrl: './sudoku-grid.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SudokuGridComponent implements OnChanges {
+export class SudokuGridComponent {
   sudokuForm = input.required<FormGroup>();
   invalidCells = input<Set<string>>(new Set<string>());
   
@@ -21,15 +21,6 @@ export class SudokuGridComponent implements OnChanges {
   get rows(): FormArray | null {
     if (!this.sudokuForm()) return null;
     return this.formService.getRowsArray(this.sudokuForm());
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['sudokuForm'] && this.sudokuForm()) {
-      const rows = this.sudokuForm().get('rows');
-      if (!rows) {
-        console.error('SudokuGrid: FormGroup does not contain FormArray named "rows"');
-      }
-    }
   }
 
   getRowsControls(): AbstractControl[] {
